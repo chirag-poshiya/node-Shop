@@ -19,6 +19,17 @@ form {
   display: inline;
 }
 
+.centered {
+  text-align: center;
+}
+.image-500{
+  max-height: 500px;
+  overflow: hidden;
+}
+.image-500 img{
+  max-height: 500px;
+  width: auto;
+}
 .main-header {
   width: 100%;
   height: 3.5rem;
