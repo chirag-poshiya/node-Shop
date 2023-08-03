@@ -10,11 +10,11 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
-  const title = req.body.title;
-  const imageUrl = req.body.imageUrl;
   const price = req.body.price;
-  const description = req.body.description;
+  const imageUrl = req.body.imageUrl;
+  const title = req.body.title;
   const product = new Product(null, title, imageUrl, description, price);
+  const description = req.body.description;
   product.save();
   res.redirect('/');
 };
@@ -31,9 +31,9 @@ exports.getEditProduct = (req, res, next) => {
       return res.redirect('/');
     }
     res.render('admin/edit-product', {
+      editing: editMode,
       pageTitle: 'Edit Product',
       path: '/admin/edit-product',
-      editing: editMode,
       product: product
     });
   });
@@ -43,10 +43,10 @@ exports.getEditProduct = (req, res, next) => {
 exports.postEditProduct = (req, res, next) => {
   const prodId = req.body.productId;
 
-  const title = req.body.title;
   const imageUrl = req.body.imageUrl;
-  const price = req.body.price;
+  const title = req.body.title;
   const description = req.body.description;
+  const price = req.body.price;
   const product = new Product(prodId, title, imageUrl, description, price);
   product.save();
 
@@ -57,8 +57,8 @@ exports.getProducts = (req, res, next) => {
   Product.fetchAll(products => {
     res.render('admin/products', {
       prods: products,
-      pageTitle: 'Admin Products',
       path: '/admin/products'
+      pageTitle: 'Admin Products',
     });
   });
 };
