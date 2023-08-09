@@ -35,10 +35,20 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getCart = (req, res, next) => {
-  res.render('shop/cart', {
-    path: '/cart',
-    pageTitle: 'Your Cart'
-  });
+  Cart.getCart(cart => {
+    Product.fetchAll(products => {
+      const cartProducts = [];
+      for(product of products){
+        if(cart.products.find(prod => prod.id === product.id)){
+
+        }
+      }
+      res.render('shop/cart', {
+        path: '/cart',
+        pageTitle: 'Your Cart'
+      });
+    });
+  })
 };
 
 exports.postCart = (req, res, next) => {
