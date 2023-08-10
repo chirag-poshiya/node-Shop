@@ -8,10 +8,11 @@
                 <ul>
                     <% products.forEach(p => { %>
                         <li>
+                            <%= p.productData.imageUrl%> 
                             <p>
                                 <%= p.productData.title%> (<%= p.qty %>)
                             </p>
-
+                            <p><%= p.productData.description%> </p>
                         </li>
                     <%}) %> 
                     <li></li>
